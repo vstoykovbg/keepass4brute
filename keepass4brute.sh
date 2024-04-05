@@ -26,7 +26,8 @@ output=$(echo -e "$line\nquit\n" | keepassxc-cli open "$1" 2>&1)
 
 # Check if the output contains "Invalid credentials"
 if ! echo "$output" | grep -q "Invalid credentials"; then
-    echo "[*] Password found: $line"; exit 0;
+    echo -ne "\n"
+    echo "[*] Password found: \"$line\""; exit 0;
 fi
 
 done < $2
